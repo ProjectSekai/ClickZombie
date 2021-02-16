@@ -1,0 +1,149 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename01_integer
+        常量: k
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 世界等级
+    YDWESetAnyTypeLocalVariable
+        预设: typename14_location
+        常量: ss
+        函数: GetUnitLoc
+            变量: gg_unit_N000_0001
+    YDWESetAnyTypeLocalVariable
+        预设: typename14_location
+        常量: mb
+        函数: PolarProjectionBJ
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: ss
+            函数: GetRandomReal
+                常量: 900.00
+                常量: 1200.00
+            函数: GetRandomDirectionDeg
+    RemoveLocation
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: ss
+    IfThenElseMultiple
+        条件
+            OperatorCompareInteger
+                函数: ModuloInteger
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: k
+                    常量: 2
+                预设: OperatorEqual
+                常量: 1
+        动作
+            DisplayTextToForce
+                函数: GetPlayersAll
+                常量: 墓碑出现了
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: mbd1
+                函数: CreateUnitAtLoc
+                    预设: Player07
+                    常量: n008
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: mb
+                    常量: 0.00
+            YDWESaveAnyTypeDataByUserData
+                预设: typename04_string
+                常量: st1Var
+                常量: 精英
+                预设: typename07_unit
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: mbd1
+            RemoveLocation
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: mb
+        动作
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: k
+                        预设: OperatorEqual
+                        常量: 2
+                动作
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename04_string
+                        常量: st1Var
+                        常量: 精英类型
+                        预设: typename08_unitcode
+                        常量: n006
+                    TriggerExecute
+                        变量: gg_trg_jingYingCreate
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: k
+                        预设: OperatorEqual
+                        常量: 4
+                动作
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename04_string
+                        常量: st1Var
+                        常量: 精英类型
+                        预设: typename08_unitcode
+                        常量: n00A
+                    TriggerExecute
+                        变量: gg_trg_jingYingCreate
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: k
+                        预设: OperatorEqual
+                        常量: 6
+                动作
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename04_string
+                        常量: st1Var
+                        常量: 精英类型
+                        预设: typename08_unitcode
+                        常量: n007
+                    TriggerExecute
+                        变量: gg_trg_jingYingCreate
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: k
+                        预设: OperatorEqual
+                        常量: 8
+                动作
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename04_string
+                        常量: st1Var
+                        常量: 精英类型
+                        预设: typename08_unitcode
+                        常量: n001
+                    TriggerExecute
+                        变量: gg_trg_jingYingCreate
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: k
+                        预设: OperatorEqual
+                        常量: 10
+                动作
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename04_string
+                        常量: st1Var
+                        常量: 精英类型
+                        预设: typename08_unitcode
+                        常量: n004
+                    TriggerExecute
+                        变量: gg_trg_jingYingCreate
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename04_string
+                        常量: st1Var
+                        常量: 世界进度
+                        预设: typename02_real
+                        常量: 9999999.00
+                    CommentString
+                        常量: 这个阶段，世界等级是不能提升的

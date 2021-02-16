@@ -1,0 +1,100 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: u
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 触发单位
+    YDWESetAnyTypeLocalVariable
+        预设: typename13_player
+        常量: p
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 触发玩家
+    YDWESaveAnyTypeDataByUserData
+        预设: typename04_string
+        常量: st1Var
+        常量: 触发单位1
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: u
+    YDWESaveAnyTypeDataByUserData
+        预设: typename04_string
+        常量: st1Var
+        常量: 触发玩家1
+        预设: typename13_player
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: p
+    IfThenElseMultiple
+        条件
+            OperatorCompareUnitCode
+                函数: GetUnitTypeId
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: u
+                预设: OperatorEqualENE
+                常量: n00A
+        动作
+            TriggerExecute
+                变量: gg_trg_yysh
+            CommentString
+                常量: '阴影伤害增加1给予两倍伤害 否则正常'
+        动作
+            IfThenElseMultiple
+                条件
+                    OperatorCompareUnitCode
+                        函数: GetUnitTypeId
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: u
+                        预设: OperatorEqualENE
+                        常量: n001
+                动作
+                    TriggerExecute
+                        变量: gg_trg_xwxzhsh
+                    CommentString
+                        常量: 虚无行者有重生
+                动作
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareUnitCode
+                                函数: GetUnitTypeId
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: u
+                                预设: OperatorEqualENE
+                                常量: n004
+                        动作
+                            TriggerExecute
+                                变量: gg_trg_ywzsh
+                            CommentString
+                                常量: 遗忘者有减伤
+                        动作
+                            IfThenElseMultiple
+                                条件
+                                    OperatorCompareUnitCode
+                                        函数: GetUnitTypeId
+                                            函数: YDWEGetAnyTypeLocalVariable
+                                                常量: u
+                                        预设: OperatorEqualENE
+                                        常量: u000
+                                动作
+                                    TriggerExecute
+                                        变量: gg_trg_cxsh
+                                    CommentString
+                                        常量: 触须有几率免疫伤害
+                                动作
+                                    UnitDamageTargetBJ
+                                        函数: YDWELoadAnyTypeDataByUserData
+                                            预设: typename13_player
+                                            函数: GetTriggerPlayer
+                                            常量: 单位
+                                        函数: GetTriggerUnit
+                                        函数: I2R
+                                            函数: YDWELoadAnyTypeDataByUserData
+                                                预设: typename13_player
+                                                函数: GetTriggerPlayer
+                                                常量: 点击伤害
+                                        预设: AttackTypeChaos
+                                        预设: DamageTypeUniversal

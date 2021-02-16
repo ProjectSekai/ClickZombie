@@ -1,0 +1,184 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: cs
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 精英
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: xlbl
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 血量倍率
+    CommentString
+        常量: '在boss场中 精英始终是boss'
+    YDWESetAnyTypeLocalVariable
+        预设: typename01_integer
+        常量: ysc
+        常量: 0
+    YDWEForLoopLocVarMultiple
+        常量: p
+        常量: 1
+        常量: 3
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename01_integer
+                常量: ysc
+                函数: YDWEForLoopLocVarIndex
+                    常量: p
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: ysc
+                        预设: OperatorEqual
+                        常量: 1
+                动作
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename08_unitcode
+                        常量: ystype
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename07_unit
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: cs
+                            常量: 精英1
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: ysc
+                        预设: OperatorEqual
+                        常量: 2
+                动作
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename08_unitcode
+                        常量: ystype
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename07_unit
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: cs
+                            常量: 精英2
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: ysc
+                        预设: OperatorEqual
+                        常量: 3
+                动作
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename08_unitcode
+                        常量: ystype
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename07_unit
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: cs
+                            常量: 精英3
+            YDWESetAnyTypeLocalVariable
+                预设: typename14_location
+                常量: ss
+                函数: GetUnitLoc
+                    变量: gg_unit_N000_0001
+            YDWESetAnyTypeLocalVariable
+                预设: typename14_location
+                常量: mb
+                函数: PolarProjectionBJ
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: ss
+                    函数: GetRandomReal
+                        常量: 900.00
+                        常量: 1200.00
+                    函数: GetRandomDirectionDeg
+            RemoveLocation
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: ss
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: ys
+                函数: CreateUnitAtLoc
+                    预设: Player07
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: ystype
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: mb
+                    常量: 0.00
+            YDWESaveAnyTypeDataByUserData
+                预设: typename07_unit
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+                常量: 精英剩余
+                预设: typename01_integer
+                函数: OperatorInt
+                    函数: YDWELoadAnyTypeDataByUserData
+                        预设: typename07_unit
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: cs
+                        常量: 精英剩余
+                    预设: OperatorAdd
+                    常量: 1
+            YDWESetAnyTypeLocalVariable
+                预设: typename02_real
+                常量: csxl
+                函数: GetUnitStateSwap
+                    预设: UnitStateLife
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: ys
+            YDWEGeneralBounsSystemUnitSetBonus
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: ys
+                预设: bonusTypeA
+                预设: unitstatechangetypeC
+                函数: R2I
+                    函数: OperatorReal
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: csxl
+                        预设: OperatorMultiply
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: xlbl
+            IssueTargetOrder
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: ys
+                预设: UnitOrderAttackUnit
+                变量: gg_unit_N000_0001
+            RemoveLocation
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: mb
+            YDWERegisterTriggerMultiple
+                函数: CreateTrigger
+                事件
+                    TriggerRegisterUnitEvent
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: ys
+                        预设: UnitEventDeath
+                动作
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename07_unit
+                        常量: ys
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: ys
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename07_unit
+                        常量: cs
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: cs
+                动作
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename07_unit
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: cs
+                        常量: 精英剩余
+                        预设: typename01_integer
+                        函数: OperatorInt
+                            函数: YDWELoadAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                常量: 精英剩余
+                            预设: OperatorSubtract
+                            常量: 1
+                    YDWERegisterTriggerFlush

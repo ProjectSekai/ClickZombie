@@ -1,0 +1,40 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename01_integer
+        常量: s
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 僵尸刷新数
+    YDWESetAnyTypeLocalVariable
+        预设: typename01_integer
+        常量: k
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 世界等级
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: y
+        函数: YDWECustomScriptCode
+            常量: '(YDLocal1Get(integer, "s") + I2R(YDUserDataGet(string, "st1Var", "僵尸初始值", integer)) + I2R(YDUserDataGet(string, "st1Var", "僵尸初始值", integer)) *(I2R(YDLocal1Get(integer, "k"))*0.3) )* YDUserDataGet(string, "st1Var", "玩家倍率", real) '
+    YDWESaveAnyTypeDataByUserData
+        预设: typename04_string
+        常量: st1Var
+        常量: 僵尸刷新数
+        预设: typename01_integer
+        函数: R2I
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: y
+    DisplayTextToPlayer
+        预设: Player00
+        常量: 0
+        常量: 0
+        函数: YDWEOperatorString3
+            常量: 已投入额外：
+            函数: R2S
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: y
+            常量: 个僵尸

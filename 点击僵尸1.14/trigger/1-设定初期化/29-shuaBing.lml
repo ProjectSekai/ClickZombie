@@ -1,0 +1,88 @@
+事件
+条件
+动作
+    IfThenElseMultiple
+        条件
+            AndMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename04_string
+                            常量: st1Var
+                            常量: 僵尸刷新数
+                        预设: OperatorGreater
+                        常量: 0
+                    OrMultiple
+                        条件
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename04_string
+                                    常量: st1Var
+                                    常量: 战场状态
+                                预设: OperatorEqual
+                                常量: 0
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename04_string
+                                    常量: st1Var
+                                    常量: 战场状态
+                                预设: OperatorEqual
+                                常量: 1
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename04_string
+                                    常量: st1Var
+                                    常量: 战场状态
+                                预设: OperatorEqual
+                                常量: 2
+        动作
+            YDWESaveAnyTypeDataByUserData
+                预设: typename04_string
+                常量: st1Var
+                常量: 僵尸刷新数
+                预设: typename01_integer
+                函数: OperatorIntegerSubtract
+                    函数: YDWELoadAnyTypeDataByUserData
+                        预设: typename04_string
+                        常量: st1Var
+                        常量: 僵尸刷新数
+                    常量: 1
+            YDWESetAnyTypeLocalVariable
+                预设: typename14_location
+                常量: ss
+                函数: GetUnitLoc
+                    变量: gg_unit_N000_0001
+            YDWESetAnyTypeLocalVariable
+                预设: typename14_location
+                常量: lv1d
+                函数: PolarProjectionBJ
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: ss
+                    函数: GetRandomReal
+                        常量: 600.00
+                        常量: 1200.00
+                    函数: GetRandomDirectionDeg
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: lv1w
+                函数: CreateUnitAtLoc
+                    预设: Player07
+                    常量: n00C
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: lv1d
+                    函数: AngleBetweenPoints
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: lv1d
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: ss
+            IssueTargetOrder
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: lv1w
+                预设: UnitOrderAttackUnit
+                变量: gg_unit_N000_0001
+            RemoveLocation
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: lv1d
+            RemoveLocation
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: ss

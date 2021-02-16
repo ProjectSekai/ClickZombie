@@ -1,0 +1,19 @@
+事件
+    TriggerRegisterPlayerEventEndCinematic
+        预设: Player00
+条件
+动作
+    YDWESaveAnyTypeDataByUserData
+        预设: typename04_string
+        常量: st1Var
+        常量: 精英
+        预设: typename07_unit
+        变量: gg_unit_n006_0010
+    PauseUnitBJ
+        预设: PauseUnpauseOptionPause
+        变量: gg_unit_n006_0010
+    YDWEActivateTrigger
+        变量: gg_trg_jingYingSetUp
+        预设: OnOffOn
+    TriggerExecute
+        变量: gg_trg_jingYingSetUp

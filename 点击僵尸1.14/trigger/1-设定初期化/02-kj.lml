@@ -1,0 +1,32 @@
+事件
+    TriggerRegisterAnyUnitEventBJ
+        预设: PlayerUnitEventResearch_Finish
+条件
+    OperatorCompareTechCode
+        函数: GetResearched
+        预设: OperatorEqualENE
+        常量: R000
+动作
+    YDWESaveAnyTypeDataByUserData
+        预设: typename13_player
+        函数: GetOwningPlayer
+            函数: GetTriggerUnit
+        常量: 点击伤害
+        预设: typename01_integer
+        函数: OperatorInt
+            常量: 10
+            预设: OperatorAdd
+            函数: OperatorInt
+                函数: GetPlayerTechCountSimple
+                    常量: R000
+                    函数: GetOwningPlayer
+                        函数: GetTriggerUnit
+                预设: OperatorMultiply
+                常量: 2
+    IfThenElseMultiple
+        条件
+            OperatorComparePlayer
+                函数: GetOwningPlayer
+                    函数: GetTriggerUnit
+                预设: OperatorEqualENE
+                函数: GetLocalPlayer

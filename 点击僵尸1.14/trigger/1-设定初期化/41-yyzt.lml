@@ -1,0 +1,51 @@
+事件
+条件
+动作
+    CommentString
+        常量: '阴影 - 调整增伤和透明度的额外代码'
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: yy
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: yinying
+            常量: 单位
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: yy
+        常量: 伤害增加
+        预设: typename01_integer
+        常量: 1
+    SetUnitVertexColor
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: yy
+        常量: 255
+        常量: 255
+        常量: 255
+        常量: 255
+    YDWETimerStartMultiple
+        函数: CreateTimer
+        常量: 5.00
+        预设: PeriodicOptionOneTime
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: yy
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: yy
+        动作
+            SetUnitVertexColor
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: yy
+                常量: 255
+                常量: 255
+                常量: 255
+                常量: 0
+            YDWESaveAnyTypeDataByUserData
+                预设: typename07_unit
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: yy
+                常量: 伤害增加
+                预设: typename01_integer
+                常量: 0

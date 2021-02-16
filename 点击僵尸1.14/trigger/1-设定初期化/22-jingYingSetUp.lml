@@ -1,0 +1,36 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: cs
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 精英
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: xlbl
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 血量倍率
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: csxl
+        函数: GetUnitStateSwap
+            预设: UnitStateLife
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: cs
+    YDWEGeneralBounsSystemUnitSetBonus
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        预设: bonusTypeA
+        预设: unitstatechangetypeC
+        函数: R2I
+            函数: OperatorReal
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: csxl
+                预设: OperatorMultiply
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: xlbl

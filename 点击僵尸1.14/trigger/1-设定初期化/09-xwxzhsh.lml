@@ -1,0 +1,167 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: u
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 触发单位1
+    YDWESetAnyTypeLocalVariable
+        预设: typename13_player
+        常量: p
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 触发玩家1
+    IfThenElseMultiple
+        条件
+            OperatorCompareReal
+                函数: YDWELoadAnyTypeDataByUserData
+                    预设: typename07_unit
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: u
+                    常量: 护盾时间
+                预设: OperatorLessEq
+                常量: 0.00
+        动作
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename07_unit
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: u
+                            常量: 伤害护盾
+                        预设: OperatorGreater
+                        常量: 0
+                动作
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename04_string
+                        常量: st1Var
+                        常量: 触发单位2
+                        预设: typename07_unit
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: u
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename04_string
+                        常量: st1Var
+                        常量: 触发玩家2
+                        预设: typename13_player
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: p
+                    CommentString
+                        常量: 首先被点击的单位有伤害护盾，而且伤害护盾不在生效期间内
+                    TriggerExecute
+                        变量: gg_trg_shanghaihudun
+                动作
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareReal
+                                函数: GetUnitState
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: u
+                                    预设: UnitStateLife
+                                预设: OperatorLess
+                                常量: 11.00
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename07_unit
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: u
+                                    常量: 重生
+                                预设: OperatorEqual
+                                常量: 1
+                        动作
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: u
+                                常量: 重生
+                                预设: typename01_integer
+                                常量: 0
+                            YDWESetAnyTypeLocalVariable
+                                预设: typename02_real
+                                常量: cls
+                                函数: GetUnitState
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: u
+                                    预设: UnitStateMaxLife
+                            YDWESetAnyTypeLocalVariable
+                                预设: typename02_real
+                                常量: cls2
+                                函数: OperatorReal
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: cls
+                                    预设: OperatorMultiply
+                                    常量: 0.50
+                            SetUnitLifeBJ
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: u
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cls2
+                            UnitRemoveAbility
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: u
+                                常量: A00A
+                            DisplayTextToForce
+                                函数: GetPlayersAll
+                                常量: 虚无行者已发动技能：重生
+                            YDWESetAnyTypeLocalVariable
+                                预设: typename20_effect
+                                常量: 1
+                                函数: AddSpecialEffectTarget
+                                    常量: Abilities\Spells\Other\HowlOfTerror\HowlTarget.mdl
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: u
+                                    常量: chest
+                            DestroyEffectBJ
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: 1
+                            CommentString
+                                常量: 调整护盾等级
+                            IncUnitAbilityLevel
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: u
+                                常量: A009
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename04_string
+                                常量: st1Var
+                                常量: 护盾等级
+                                预设: typename01_integer
+                                函数: GetUnitAbilityLevelSwapped
+                                    常量: A009
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: u
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: u
+                                常量: 伤害护盾
+                                预设: typename01_integer
+                                函数: OperatorInt
+                                    函数: YDWELoadAnyTypeDataByUserData
+                                        预设: typename07_unit
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: u
+                                        常量: 伤害护盾
+                                    预设: OperatorAdd
+                                    常量: 3
+                        动作
+                            UnitDamageTargetBJ
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename13_player
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: p
+                                    常量: 单位
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: u
+                                函数: I2R
+                                    函数: YDWELoadAnyTypeDataByUserData
+                                        预设: typename13_player
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: p
+                                        常量: 点击伤害
+                                预设: AttackTypeChaos
+                                预设: DamageTypeUniversal

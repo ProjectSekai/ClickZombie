@@ -1,0 +1,117 @@
+事件
+    TriggerRegisterAnyUnitEventBJ
+        预设: PlayerUnitEventSpellEffect
+条件
+    OperatorCompareAbilityId
+        函数: GetSpellAbilityId
+        预设: OperatorEqualENE
+        常量: A001
+动作
+    IfThenElseMultiple
+        条件
+            OperatorCompareInteger
+                函数: GetPlayerState
+                    函数: GetOwningPlayer
+                        函数: GetTriggerUnit
+                    预设: PlayerStateGold
+                预设: OperatorGreaterEq
+                常量: 30
+        动作
+            IfThenElseMultiple
+                条件
+                    OperatorCompareReal
+                        函数: GetUnitStateSwap
+                            预设: UnitStateLife
+                            变量: gg_unit_N000_0001
+                        预设: OperatorLess
+                        常量: 500.00
+                动作
+                    SetUnitLifeBJ
+                        变量: gg_unit_N000_0001
+                        函数: OperatorReal
+                            函数: GetUnitStateSwap
+                                预设: UnitStateLife
+                                变量: gg_unit_N000_0001
+                            预设: OperatorAdd
+                            常量: 15.00
+                    MultiboardSetItemValue
+                        函数: MultiboardGetItem
+                            预设: bj_lastCreatedMultiboard
+                            常量: 0
+                            常量: 0
+                        函数: OperatorString
+                            常量: 圣贤生命值：
+                            函数: OperatorString
+                                函数: I2S
+                                    函数: R2I
+                                        函数: GetUnitState
+                                            变量: gg_unit_N000_0001
+                                            预设: UnitStateLife
+                                函数: OperatorString
+                                    常量: /
+                                    函数: I2S
+                                        函数: R2I
+                                            函数: GetUnitStateSwap
+                                                预设: UnitStateMaxLife
+                                                变量: gg_unit_N000_0001
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename04_string
+                        常量: st1Var
+                        常量: 金币
+                        预设: typename01_integer
+                        函数: OperatorInt
+                            函数: YDWELoadAnyTypeDataByUserData
+                                预设: typename04_string
+                                常量: st1Var
+                                常量: 金币
+                            预设: OperatorSubtract
+                            常量: 30
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename20_effect
+                        常量: p
+                        函数: AddSpecialEffectTarget
+                            常量: war3mapImported\EarthNova.mdx
+                            变量: gg_unit_N000_0001
+                            常量: origin
+                    YDWETimerDestroyEffect
+                        常量: 2
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: p
+                    DisplayTimedTextToForce
+                        函数: GetPlayersAll
+                        常量: 10.00
+                        函数: OperatorString
+                            函数: GetPlayerName
+                                函数: GetOwningPlayer
+                                    函数: GetTriggerUnit
+                            函数: OperatorString
+                                常量: 恢复了生命值，当前的生命值为：
+                                函数: OperatorString
+                                    函数: I2S
+                                        函数: R2I
+                                            函数: GetUnitStateSwap
+                                                预设: UnitStateLife
+                                                变量: gg_unit_N000_0001
+                                    常量: 。
+                动作
+                    DisplayTimedTextToPlayer
+                        函数: GetOwningPlayer
+                            函数: GetTriggerUnit
+                        常量: 0
+                        常量: 0
+                        常量: 5.00
+                        常量: 生命值已满无需恢复
+        动作
+            DisplayTimedTextToPlayer
+                函数: GetOwningPlayer
+                    函数: GetTriggerUnit
+                常量: 0
+                常量: 0
+                常量: 5.00
+                常量: 没有足够的金币
+            UnitRemoveAbilityBJ
+                常量: A003
+                函数: GetTriggerUnit
+            UnitAddAbilityBJ
+                常量: A003
+                函数: GetTriggerUnit

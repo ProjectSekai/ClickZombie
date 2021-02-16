@@ -1,0 +1,51 @@
+事件
+    TriggerRegisterTimerEventSingle
+        常量: 0.20
+条件
+动作
+    CreateMultiboardBJ
+        常量: 1
+        常量: 1
+        常量: 永恒魔法的咏唱
+    MultiboardSetItemsStyle
+        预设: bj_lastCreatedMultiboard
+        预设: ShowHideShow
+        预设: ShowHideShow
+    MultiboardSetItemWidth
+        函数: MultiboardGetItem
+            预设: bj_lastCreatedMultiboard
+            常量: 0
+            常量: 0
+        常量: 0.10
+    MultiboardSetItemIcon
+        函数: MultiboardGetItem
+            预设: bj_lastCreatedMultiboard
+            常量: 0
+            常量: 0
+        常量: ReplaceableTextures\PassiveButtons\PASBTNElunesBlessing.blp
+    MultiboardSetItemValue
+        函数: MultiboardGetItem
+            预设: bj_lastCreatedMultiboard
+            常量: 0
+            常量: 0
+        函数: OperatorString
+            常量: 圣贤生命值：
+            函数: OperatorString
+                函数: I2S
+                    函数: R2I
+                        函数: GetUnitState
+                            变量: gg_unit_N000_0001
+                            预设: UnitStateLife
+                函数: OperatorString
+                    常量: /
+                    函数: I2S
+                        函数: R2I
+                            函数: GetUnitStateSwap
+                                预设: UnitStateMaxLife
+                                变量: gg_unit_N000_0001
+    MultiboardMinimizeBJ
+        预设: Maximize
+        函数: GetLastCreatedMultiboard
+    MultiboardDisplayBJ
+        预设: ShowHideShow
+        函数: GetLastCreatedMultiboard

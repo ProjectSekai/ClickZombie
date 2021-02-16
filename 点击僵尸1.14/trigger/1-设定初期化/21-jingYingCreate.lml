@@ -1,0 +1,152 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename08_unitcode
+        常量: cstype
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 精英类型
+    DisplayTextToForce
+        函数: GetPlayersAll
+        常量: 精英出现了
+    CommentString
+        常量: 找到类型标识后分别执行不同的单位
+    YDWESaveAnyTypeDataByUserData
+        预设: typename04_string
+        常量: st1Var
+        常量: 战场状态
+        预设: typename01_integer
+        常量: 1
+    YDWESetAnyTypeLocalVariable
+        预设: typename14_location
+        常量: mbd
+        函数: GetUnitLoc
+            函数: YDWELoadAnyTypeDataByUserData
+                预设: typename04_string
+                常量: st1Var
+                常量: 精英
+    RemoveUnit
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 精英
+    CommentString
+        常量: 随后这里就直接用类型进行创建，你传进来什么类型就创建什么类型的精英
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: cs
+        函数: CreateUnitAtLoc
+            预设: Player07
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: cstype
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: mbd
+            常量: 0.00
+    CommentString
+        常量: 随后这里就直接用类型进行创建，你传进来什么类型就创建什么类型的精英
+    YDWESaveAnyTypeDataByUserData
+        预设: typename04_string
+        常量: st1Var
+        常量: 精英
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+    IssueTargetOrder
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        预设: UnitOrderAttackUnit
+        变量: gg_unit_N000_0001
+    RemoveLocation
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: mbd
+    CommentString
+        常量: '最后做一个类型判断 -> 分别启用各自的类型触发器'
+    TriggerExecute
+        变量: gg_trg_jingYingSetUp
+    CommentString
+        常量: 先运行提升血量上限的代码
+    IfThenElseMultiple
+        条件
+            OperatorCompareUnitCode
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cstype
+                预设: OperatorEqualENE
+                常量: n00A
+        动作
+            YDWEActivateTrigger
+                变量: gg_trg_jingYingYinYing
+                预设: OnOffOn
+            TriggerExecute
+                变量: gg_trg_jingYingYinYing
+    IfThenElseMultiple
+        条件
+            OperatorCompareUnitCode
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cstype
+                预设: OperatorEqualENE
+                常量: n007
+        动作
+            YDWEActivateTrigger
+                变量: gg_trg_jingYingMengMa
+                预设: OnOffOn
+            TriggerExecute
+                变量: gg_trg_jingYingMengMa
+    IfThenElseMultiple
+        条件
+            OperatorCompareUnitCode
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cstype
+                预设: OperatorEqualENE
+                常量: n001
+        动作
+            YDWEActivateTrigger
+                变量: gg_trg_jingYingXuWuXingZhe
+                预设: OnOffOn
+            TriggerExecute
+                变量: gg_trg_jingYingXuWuXingZhe
+    IfThenElseMultiple
+        条件
+            OperatorCompareUnitCode
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cstype
+                预设: OperatorEqualENE
+                常量: n004
+        动作
+            YDWEActivateTrigger
+                变量: gg_trg_jingYingYiWangZhe
+                预设: OnOffOn
+            TriggerExecute
+                变量: gg_trg_jingYingYiWangZhe
+    YDWERegisterTriggerMultiple
+        函数: CreateTrigger
+        事件
+            TriggerRegisterUnitEvent
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+                预设: UnitEventDeath
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: cs
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+        动作
+            YDWESaveAnyTypeDataByUserData
+                预设: typename04_string
+                常量: st1Var
+                常量: 战场状态
+                预设: typename01_integer
+                常量: 0
+            IfThenElseMultiple
+                条件
+                    OperatorCompareUnitCode
+                        函数: GetUnitTypeId
+                            函数: GetDyingUnit
+                        预设: OperatorEqualENE
+                        常量: n004
+                动作
+                    TriggerExecute
+                        变量: gg_trg_Bossmae
+            YDWERegisterTriggerFlush

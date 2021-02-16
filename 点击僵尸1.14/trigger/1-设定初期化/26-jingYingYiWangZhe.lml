@@ -1,0 +1,186 @@
+事件
+    YDWEDisableRegister
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: cs
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 精英
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 点击间距
+        预设: typename02_real
+        常量: 0.00
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 龙魂数量
+        预设: typename01_integer
+        常量: 0
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 龙魂召唤
+        预设: typename02_real
+        常量: 8.00
+    YDWETimerStartMultiple
+        函数: CreateTimer
+        常量: 0.03
+        预设: PeriodicOptionPeriodic
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: cs
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+        动作
+            IfThenElseMultiple
+                条件
+                    OperatorCompareBoolean
+                        函数: IsUnitAliveBJ
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: cs
+                        预设: OperatorEqualENE
+                        常量: true
+                动作
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename02_real
+                        常量: ju
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename07_unit
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: cs
+                            常量: 点击间距
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename07_unit
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: cs
+                        常量: 点击间距
+                        预设: typename02_real
+                        函数: OperatorReal
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: ju
+                            预设: OperatorAdd
+                            常量: 0.03
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareReal
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: ju
+                                预设: OperatorGreaterEq
+                                常量: 4.50
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename07_unit
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: cs
+                                    常量: 龙魂数量
+                                预设: OperatorLess
+                                常量: 4
+                        动作
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                常量: 点击间距
+                                预设: typename02_real
+                                常量: 0.00
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                常量: 龙魂召唤
+                                预设: typename02_real
+                                常量: 8.00
+                            IssueImmediateOrder
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                预设: UnitOrderAvatar
+                            YDWETimerStartMultiple
+                                函数: CreateTimer
+                                常量: 1.20
+                                预设: PeriodicOptionOneTime
+                                动作
+                                动作
+                                    IssueTargetOrder
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: cs
+                                        预设: UnitOrderAttackUnit
+                                        变量: gg_unit_N000_0001
+                                    YDWETimerStartFlush
+                    CommentString
+                        常量: '上面是点击间距 下面是龙魂召唤 互不影响'
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename02_real
+                        常量: ju2
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename07_unit
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: cs
+                            常量: 龙魂召唤
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename07_unit
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: cs
+                        常量: 龙魂召唤
+                        预设: typename02_real
+                        函数: OperatorReal
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: ju2
+                            预设: OperatorSubtract
+                            常量: 0.03
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareReal
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: ju2
+                                预设: OperatorLessEq
+                                常量: 0.00
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename07_unit
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: cs
+                                    常量: 龙魂数量
+                                预设: OperatorLess
+                                常量: 4
+                        动作
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                常量: 点击间距
+                                预设: typename02_real
+                                常量: 0.00
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                常量: 龙魂召唤
+                                预设: typename02_real
+                                常量: 8.00
+                            IssueImmediateOrder
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                预设: UnitOrderAvatar
+                            YDWETimerStartMultiple
+                                函数: CreateTimer
+                                常量: 1.20
+                                预设: PeriodicOptionOneTime
+                                动作
+                                动作
+                                    IssueTargetOrder
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: cs
+                                        预设: UnitOrderAttackUnit
+                                        变量: gg_unit_N000_0001
+                                    YDWETimerStartFlush
+                动作
+                    YDWETimerStartFlush

@@ -1,0 +1,142 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: u
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 触发单位2
+    YDWESetAnyTypeLocalVariable
+        预设: typename13_player
+        常量: p
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 触发玩家2
+    DisplayTextToForce
+        函数: GetPlayersAll
+        常量: 伤害护盾已发动
+    CommentString
+        常量: 首先被点击的单位有伤害护盾，而且伤害护盾不在生效期间内
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: xwx
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 精英
+    YDWESetAnyTypeLocalVariable
+        预设: typename01_integer
+        常量: shdj
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 护盾等级
+    IfThenElseMultiple
+        条件
+            OperatorCompareInteger
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: shdj
+                预设: OperatorEqual
+                常量: 1
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename02_real
+                常量: cxt
+                常量: 0.75
+    IfThenElseMultiple
+        条件
+            OperatorCompareInteger
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: shdj
+                预设: OperatorEqual
+                常量: 2
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename02_real
+                常量: cxt
+                常量: 1.00
+    CommentString
+        常量: 获得虚无行者的护盾等级，为护盾注册使用时间
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: u
+        常量: 伤害护盾
+        预设: typename01_integer
+        函数: OperatorInt
+            函数: YDWELoadAnyTypeDataByUserData
+                预设: typename07_unit
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: u
+                常量: 伤害护盾
+            预设: OperatorSubtract
+            常量: 1
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: u
+        常量: 护盾时间
+        预设: typename02_real
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cxt
+    YDWESetAnyTypeLocalVariable
+        预设: typename20_effect
+        常量: 1
+        函数: AddSpecialEffectTarget
+            常量: Abilities\Spells\Human\ManaShield\ManaShieldCaster.mdl
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: u
+            常量: origin
+    DestroyEffectBJ
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: 1
+    CommentString
+        常量: 扣除1次护盾使用次数，然后每0.03秒降低0.03的护盾持续时间，当护盾时间结束后，停止触发器
+    YDWETimerStartMultiple
+        函数: CreateTimer
+        常量: 0.03
+        预设: PeriodicOptionPeriodic
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: u
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: u
+        动作
+            IfThenElseMultiple
+                条件
+                    OperatorCompareReal
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename07_unit
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: u
+                            常量: 护盾时间
+                        预设: OperatorLessEq
+                        常量: 0.00
+                动作
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename07_unit
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: u
+                        常量: 护盾时间
+                        预设: typename02_real
+                        常量: 0.00
+                    YDWETimerStartFlush
+                动作
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename07_unit
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: u
+                        常量: 护盾时间
+                        预设: typename02_real
+                        函数: OperatorReal
+                            函数: YDWELoadAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: u
+                                常量: 护盾时间
+                            预设: OperatorSubtract
+                            常量: 0.03

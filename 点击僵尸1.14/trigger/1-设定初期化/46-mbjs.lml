@@ -1,0 +1,76 @@
+事件
+    TriggerRegisterTimerEventSingle
+        常量: 30.00
+条件
+动作
+    DisplayTimedTextToForce
+        函数: GetPlayersAll
+        常量: 5.00
+        常量: 精英怪物将在100秒后登场
+    YDWESetAnyTypeLocalVariable
+        预设: typename14_location
+        常量: ss
+        函数: GetUnitLoc
+            变量: gg_unit_N000_0001
+    YDWESetAnyTypeLocalVariable
+        预设: typename14_location
+        常量: mb
+        函数: PolarProjectionBJ
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: ss
+            函数: GetRandomReal
+                常量: 600.00
+                常量: 1200.00
+            函数: GetRandomDirectionDeg
+    RemoveLocation
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: ss
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: mbd
+        函数: CreateUnitAtLoc
+            预设: Player06
+            常量: n008
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: mb
+            常量: 0.00
+    YDWETimerStartMultiple
+        函数: CreateTimer
+        常量: 100.00
+        预设: PeriodicOptionOneTime
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename14_location
+                常量: mb
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: mb
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: mbd
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: mbd
+        动作
+            RemoveUnit
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: mbd
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: jyjs
+                函数: CreateUnitAtLoc
+                    预设: Player06
+                    常量: n00D
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: mb
+                    常量: 0.00
+            DisplayTimedTextToForce
+                函数: GetPlayersAll
+                常量: 5.00
+                常量: 精英僵尸进攻
+            IssueTargetOrder
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: jyjs
+                预设: UnitOrderAttackUnit
+                变量: gg_unit_N000_0001
+            RemoveLocation
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: mb

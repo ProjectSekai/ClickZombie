@@ -1,0 +1,231 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename01_integer
+        常量: const
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 镜头暂停
+    IfThenElseMultiple
+        条件
+            OperatorCompareInteger
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: const
+                预设: OperatorEqual
+                常量: 1
+        动作
+        动作
+            YDWEForLoopLocVarMultiple
+                常量: p
+                常量: 1
+                常量: 6
+                动作
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename01_integer
+                        常量: sd
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename13_player
+                            函数: ConvertedPlayer
+                                函数: YDWEForLoopLocVarIndex
+                                    常量: p
+                            常量: 镜头控制
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename01_integer
+                        常量: zt
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename04_string
+                            常量: st1Var
+                            常量: 战场状态
+                    IfThenElseMultiple
+                        条件
+                            OrMultiple
+                                条件
+                                    OperatorCompareInteger
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: zt
+                                        预设: OperatorEqual
+                                        常量: 0
+                                    OperatorCompareInteger
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: zt
+                                        预设: OperatorEqual
+                                        常量: 2
+                        动作
+                            IfThenElseMultiple
+                                条件
+                                    OperatorCompareInteger
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: sd
+                                        预设: OperatorEqual
+                                        常量: 1
+                                动作
+                                    CameraSetupApplyForPlayer
+                                        预设: CameraApply
+                                        变量: gg_cam_Camera_001
+                                        函数: ConvertedPlayer
+                                            函数: YDWEForLoopLocVarIndex
+                                                常量: p
+                                        常量: 0.20
+                            IfThenElseMultiple
+                                条件
+                                    OperatorCompareInteger
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: sd
+                                        预设: OperatorEqual
+                                        常量: 2
+                                动作
+                                    CameraSetupApplyForPlayer
+                                        预设: CameraApply
+                                        变量: gg_cam_Camera_002
+                                        函数: ConvertedPlayer
+                                            函数: YDWEForLoopLocVarIndex
+                                                常量: p
+                                        常量: 0.20
+                            IfThenElseMultiple
+                                条件
+                                    OperatorCompareInteger
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: sd
+                                        预设: OperatorEqual
+                                        常量: 3
+                                动作
+                                    CameraSetupApplyForPlayer
+                                        预设: CameraApply
+                                        变量: gg_cam_Camera_003
+                                        函数: ConvertedPlayer
+                                            函数: YDWEForLoopLocVarIndex
+                                                常量: p
+                                        常量: 0.20
+                            IfThenElseMultiple
+                                条件
+                                    OperatorCompareInteger
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: sd
+                                        预设: OperatorEqual
+                                        常量: 4
+                                动作
+                                    CameraSetupApplyForPlayer
+                                        预设: CameraApply
+                                        变量: gg_cam_Camera_004
+                                        函数: ConvertedPlayer
+                                            函数: YDWEForLoopLocVarIndex
+                                                常量: p
+                                        常量: 0.20
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareInteger
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: zt
+                                预设: OperatorEqual
+                                常量: 1
+                        动作
+                            IfThenElseMultiple
+                                条件
+                                    OperatorCompareInteger
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: sd
+                                        预设: OperatorEqual
+                                        常量: 1
+                                动作
+                                    CameraSetupApplyForPlayer
+                                        预设: CameraApply
+                                        变量: gg_cam_Camera_005
+                                        函数: ConvertedPlayer
+                                            函数: YDWEForLoopLocVarIndex
+                                                常量: p
+                                        常量: 0.20
+                            IfThenElseMultiple
+                                条件
+                                    OperatorCompareInteger
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: sd
+                                        预设: OperatorEqual
+                                        常量: 2
+                                动作
+                                    CameraSetupApplyForPlayer
+                                        预设: CameraApply
+                                        变量: gg_cam_Camera_006
+                                        函数: ConvertedPlayer
+                                            函数: YDWEForLoopLocVarIndex
+                                                常量: p
+                                        常量: 0.20
+                            IfThenElseMultiple
+                                条件
+                                    OperatorCompareInteger
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: sd
+                                        预设: OperatorEqual
+                                        常量: 3
+                                动作
+                                    CameraSetupApplyForPlayer
+                                        预设: CameraApply
+                                        变量: gg_cam_Camera_007
+                                        函数: ConvertedPlayer
+                                            函数: YDWEForLoopLocVarIndex
+                                                常量: p
+                                        常量: 0.20
+                            IfThenElseMultiple
+                                条件
+                                    OperatorCompareInteger
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: sd
+                                        预设: OperatorEqual
+                                        常量: 4
+                                动作
+                                    CameraSetupApplyForPlayer
+                                        预设: CameraApply
+                                        变量: gg_cam_Camera_008
+                                        函数: ConvertedPlayer
+                                            函数: YDWEForLoopLocVarIndex
+                                                常量: p
+                                        常量: 0.20
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareInteger
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: zt
+                                预设: OperatorEqual
+                                常量: 3
+                        动作
+                            ResetToGameCameraForPlayer
+                                函数: ConvertedPlayer
+                                    函数: YDWEForLoopLocVarIndex
+                                        常量: p
+                                常量: 0.00
+                            SetCameraFieldForPlayer
+                                函数: ConvertedPlayer
+                                    函数: YDWEForLoopLocVarIndex
+                                        常量: p
+                                预设: CameraFieldTargetDistance
+                                常量: 1650.00
+                                常量: 0.20
+                            SetCameraFieldForPlayer
+                                函数: ConvertedPlayer
+                                    函数: YDWEForLoopLocVarIndex
+                                        常量: p
+                                预设: CameraFieldAOA
+                                常量: 304.00
+                                常量: 0.20
+                            SetCameraFieldForPlayer
+                                函数: ConvertedPlayer
+                                    函数: YDWEForLoopLocVarIndex
+                                        常量: p
+                                预设: CameraFieldFOV
+                                常量: 70.00
+                                常量: 0.20
+                            SetCameraFieldForPlayer
+                                函数: ConvertedPlayer
+                                    函数: YDWEForLoopLocVarIndex
+                                        常量: p
+                                预设: CameraFieldZOffset
+                                常量: 90.00
+                                常量: 0.20
+                            SetCameraFieldForPlayer
+                                函数: ConvertedPlayer
+                                    函数: YDWEForLoopLocVarIndex
+                                        常量: p
+                                预设: CameraFieldZOffset
+                                常量: 0.00
+                                常量: 0.20

@@ -1,0 +1,217 @@
+事件
+    TriggerRegisterUnitEvent
+        变量: gg_unit_n002_0002
+        预设: UnitEventDeath
+条件
+动作
+    RemoveUnit
+        变量: gg_unit_n00B_0005
+    YDWESaveAnyTypeDataByUserData
+        预设: typename04_string
+        常量: st1Var
+        常量: 金币
+        预设: typename01_integer
+        常量: 20
+    DisplayTextToForce
+        函数: GetPlayersAll
+        常量: 现在，游戏正式开始
+    DisplayTextToForce
+        函数: GetPlayersAll
+        函数: OperatorString
+            常量: 当前玩家倍率被修正为：
+            函数: R2S
+                函数: YDWELoadAnyTypeDataByUserData
+                    预设: typename04_string
+                    常量: st1Var
+                    常量: 玩家倍率
+    YDWESetAnyTypeLocalVariable
+        预设: typename05_timer
+        常量: t1
+        函数: CreateTimer
+    YDWESetAnyTypeLocalVariable
+        预设: typename05_timer
+        常量: t2
+        函数: CreateTimer
+    YDWETimerStartMultiple
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: t1
+        常量: 0.30
+        预设: PeriodicOptionPeriodic
+        动作
+        动作
+            ConditionalTriggerExecute
+                变量: gg_trg_shuaBing
+            ForForceMultiple
+                函数: GetPlayersAll
+                动作
+                    SetPlayerState
+                        函数: GetEnumPlayer
+                        预设: PlayerStateGold
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename04_string
+                            常量: st1Var
+                            常量: 金币
+                    SetUnitState
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename13_player
+                            函数: GetEnumPlayer
+                            常量: 单位
+                        预设: UnitStateLifeSec
+                        函数: GetUnitState
+                            变量: gg_unit_N000_0001
+                            预设: UnitStateLife
+    YDWETimerStartMultiple
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: t2
+        常量: 15.00
+        预设: PeriodicOptionPeriodic
+        动作
+        动作
+            IfThenElseMultiple
+                条件
+                    OrMultiple
+                        条件
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename04_string
+                                    常量: st1Var
+                                    常量: 战场状态
+                                预设: OperatorEqual
+                                常量: 0
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename04_string
+                                    常量: st1Var
+                                    常量: 战场状态
+                                预设: OperatorEqual
+                                常量: 1
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename04_string
+                                    常量: st1Var
+                                    常量: 战场状态
+                                预设: OperatorEqual
+                                常量: 2
+                动作
+                    TriggerExecute
+                        变量: gg_trg_shijieTimer
+            CommentString
+                常量: boss战期间不添加
+    YDWETimerStartMultiple
+        函数: CreateTimer
+        常量: 1.20
+        预设: PeriodicOptionOneTime
+        动作
+        动作
+            DisplayTextToForce
+                函数: GetPlayersAll
+                常量: |cffc0c0c0提示：|r|cff00ccff可通过按下Esc来(|r|cffffff00开启|r|cff00ccff/|r|cffff8080关闭|r|cff00ccff)方向指示器|r
+            SetUnitVertexColorBJ
+                变量: gg_unit_n00E_0014
+                常量: 100
+                常量: 100
+                常量: 100
+                常量: 0.00
+            SetUnitVertexColorBJ
+                变量: gg_unit_n00G_0012
+                常量: 100
+                常量: 100
+                常量: 100
+                常量: 0.00
+            SetUnitVertexColorBJ
+                变量: gg_unit_n00F_0013
+                常量: 100
+                常量: 100
+                常量: 100
+                常量: 0.00
+            SetUnitVertexColorBJ
+                变量: gg_unit_n00D_0010
+                常量: 100
+                常量: 100
+                常量: 100
+                常量: 0.00
+            YDWERegisterTriggerMultiple
+                函数: CreateTrigger
+                事件
+                    TriggerRegisterPlayerEventEndCinematic
+                        预设: PlayerALL
+                动作
+                动作
+                    IfThenElseMultiple
+                        条件
+                            OperatorComparePlayer
+                                函数: GetTriggerPlayer
+                                预设: OperatorEqualENE
+                                函数: GetLocalPlayer
+                        动作
+                            IfThenElseMultiple
+                                条件
+                                    OperatorCompareInteger
+                                        函数: YDWELoadAnyTypeDataByUserData
+                                            预设: typename13_player
+                                            函数: GetTriggerPlayer
+                                            常量: 方向指示器
+                                        预设: OperatorEqual
+                                        常量: 1
+                                动作
+                                    YDWESaveAnyTypeDataByUserData
+                                        预设: typename13_player
+                                        函数: GetTriggerPlayer
+                                        常量: 方向指示器
+                                        预设: typename01_integer
+                                        常量: 0
+                                    SetUnitVertexColorBJ
+                                        变量: gg_unit_n00E_0014
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100.00
+                                    SetUnitVertexColorBJ
+                                        变量: gg_unit_n00G_0012
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100.00
+                                    SetUnitVertexColorBJ
+                                        变量: gg_unit_n00F_0013
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100.00
+                                    SetUnitVertexColorBJ
+                                        变量: gg_unit_n00D_0010
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100.00
+                                动作
+                                    SetUnitVertexColorBJ
+                                        变量: gg_unit_n00E_0014
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100
+                                        常量: 0.00
+                                    SetUnitVertexColorBJ
+                                        变量: gg_unit_n00G_0012
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100
+                                        常量: 0.00
+                                    SetUnitVertexColorBJ
+                                        变量: gg_unit_n00F_0013
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100
+                                        常量: 0.00
+                                    SetUnitVertexColorBJ
+                                        变量: gg_unit_n00D_0010
+                                        常量: 100
+                                        常量: 100
+                                        常量: 100
+                                        常量: 0.00
+                                    YDWESaveAnyTypeDataByUserData
+                                        预设: typename13_player
+                                        函数: GetTriggerPlayer
+                                        常量: 方向指示器
+                                        预设: typename01_integer
+                                        常量: 1

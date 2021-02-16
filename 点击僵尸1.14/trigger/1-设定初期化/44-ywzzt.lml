@@ -1,0 +1,218 @@
+事件
+    TriggerRegisterAnyUnitEventBJ
+        预设: PlayerUnitEventSpellEffect
+条件
+    OperatorCompareAbilityId
+        函数: GetSpellAbilityId
+        预设: OperatorEqualENE
+        常量: A00C
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: cs
+        函数: GetSpellAbilityUnit
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 龙魂数量
+        预设: typename01_integer
+        函数: OperatorInt
+            函数: YDWELoadAnyTypeDataByUserData
+                预设: typename07_unit
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+                常量: 龙魂数量
+            预设: OperatorAdd
+            常量: 1
+    SetUnitMoveSpeed
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        函数: OperatorReal
+            函数: GetUnitMoveSpeed
+                函数: GetTriggerUnit
+            预设: OperatorAdd
+            常量: 5.00
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: cs2
+        函数: I2R
+            函数: YDWELoadAnyTypeDataByUserData
+                预设: typename07_unit
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+                常量: 龙魂数量
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 协同减伤
+        预设: typename02_real
+        函数: OperatorReal
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: cs2
+            预设: OperatorMultiply
+            函数: OperatorReal
+                常量: 20.00
+                预设: OperatorAdd
+                函数: OperatorReal
+                    常量: 15.00
+                    预设: OperatorMultiply
+                    函数: RMaxBJ
+                        常量: 0.00
+                        函数: OperatorReal
+                            函数: I2R
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename04_string
+                                    常量: st1Var
+                                    常量: 战场状态
+                            预设: OperatorSubtract
+                            常量: 2.00
+    YDWEForLoopLocVarMultiple
+        常量: p
+        常量: 1
+        常量: 6
+        动作
+            YDWESaveAnyTypeDataByUserData
+                预设: typename13_player
+                函数: ConvertedPlayer
+                    函数: YDWEForLoopLocVarIndex
+                        常量: p
+                常量: 点击控制
+                预设: typename02_real
+                函数: OperatorReal
+                    常量: 0.20
+                    预设: OperatorAdd
+                    函数: OperatorReal
+                        常量: 0.05
+                        预设: OperatorMultiply
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: cs2
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: csx
+        函数: GetUnitX
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: cs
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: csy
+        函数: GetUnitY
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: cs
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: cs1
+        函数: CreateUnitAtLoc
+            预设: Player07
+            常量: u000
+            函数: PolarProjectionBJ
+                函数: Location
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: csx
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: csy
+                常量: 100.00
+                函数: GetRandomDirectionDeg
+            常量: 0
+    IssueTargetOrder
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs1
+        预设: UnitOrderAttackUnit
+        变量: gg_unit_N000_0001
+    YDWERegisterTriggerMultiple
+        函数: CreateTrigger
+        事件
+            TriggerRegisterUnitEvent
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs1
+                预设: UnitEventDeath
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: cs
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: cs1
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs1
+        动作
+            YDWESaveAnyTypeDataByUserData
+                预设: typename07_unit
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+                常量: 龙魂数量
+                预设: typename01_integer
+                函数: OperatorInt
+                    函数: YDWELoadAnyTypeDataByUserData
+                        预设: typename07_unit
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: cs
+                        常量: 龙魂数量
+                    预设: OperatorSubtract
+                    常量: 1
+            SetUnitMoveSpeed
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+                函数: OperatorReal
+                    函数: GetUnitMoveSpeed
+                        函数: GetTriggerUnit
+                    预设: OperatorSubtract
+                    常量: 5.00
+            YDWESetAnyTypeLocalVariable
+                预设: typename02_real
+                常量: cs2
+                函数: I2R
+                    函数: YDWELoadAnyTypeDataByUserData
+                        预设: typename07_unit
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: cs
+                        常量: 龙魂数量
+            YDWESaveAnyTypeDataByUserData
+                预设: typename07_unit
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+                常量: 协同减伤
+                预设: typename02_real
+                函数: OperatorReal
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: cs2
+                    预设: OperatorMultiply
+                    函数: OperatorReal
+                        常量: 20.00
+                        预设: OperatorAdd
+                        函数: OperatorReal
+                            常量: 15.00
+                            预设: OperatorMultiply
+                            函数: RMaxBJ
+                                常量: 0.00
+                                函数: OperatorReal
+                                    函数: I2R
+                                        函数: YDWELoadAnyTypeDataByUserData
+                                            预设: typename04_string
+                                            常量: st1Var
+                                            常量: 战场状态
+                                    预设: OperatorSubtract
+                                    常量: 2.00
+            YDWEForLoopLocVarMultiple
+                常量: p
+                常量: 1
+                常量: 6
+                动作
+                    YDWESaveAnyTypeDataByUserData
+                        预设: typename13_player
+                        函数: ConvertedPlayer
+                            函数: YDWEForLoopLocVarIndex
+                                常量: p
+                        常量: 点击控制
+                        预设: typename02_real
+                        函数: OperatorReal
+                            常量: 0.20
+                            预设: OperatorAdd
+                            函数: OperatorReal
+                                常量: 0.05
+                                预设: OperatorMultiply
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs2

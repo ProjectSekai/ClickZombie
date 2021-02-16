@@ -1,0 +1,53 @@
+事件
+    TriggerRegisterTimerEventSingle
+        常量: 2.00
+条件
+动作
+    禁用: YDWEForLoopLocVarMultiple
+        常量: p
+        常量: 1
+        常量: 10
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename01_integer
+                常量: k
+                函数: YDWEForLoopLocVarIndex
+                    常量: p
+            禁用: YDWESetAnyTypeLocalVariable
+                预设: typename02_real
+                常量: y
+                函数: YDWECustomScriptCode
+                    常量: '12*(1+(0.1+0.4*(1-8/(10+I2R(YDLocal1Get(integer, "k")))))*I2R(YDLocal1Get(integer, "k"))) * YDUserDataGet(string, "st1Var", "玩家倍率", real)'
+            DisplayTextToPlayer
+                预设: Player00
+                常量: 0
+                常量: 0
+                函数: R2S
+                    函数: YDWEGetAnyTypeLocalVariable
+                        常量: y
+    YDWESetAnyTypeLocalVariable
+        预设: typename01_integer
+        常量: k
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 世界等级
+    YDWESetAnyTypeLocalVariable
+        预设: typename01_integer
+        常量: s
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 僵尸刷新数
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: y
+        函数: YDWECustomScriptCode
+            常量: '(YDLocal1Get(integer, "s") + I2R(YDUserDataGet(string, "st1Var", "僵尸初始值", integer)) + I2R(YDUserDataGet(string, "st1Var", "僵尸初始值", integer)) *(I2R(YDLocal1Get(integer, "k"))*0.3) )* YDUserDataGet(string, "st1Var", "玩家倍率", real) '
+    DisplayTextToPlayer
+        预设: Player00
+        常量: 0
+        常量: 0
+        函数: R2S
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: y

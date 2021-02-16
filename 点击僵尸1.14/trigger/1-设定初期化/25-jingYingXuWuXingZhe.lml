@@ -1,0 +1,80 @@
+事件
+    YDWEDisableRegister
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: cs
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 精英
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 伤害护盾
+        预设: typename01_integer
+        常量: 3
+    YDWESaveAnyTypeDataByUserData
+        预设: typename04_string
+        常量: st1Var
+        常量: 护盾等级
+        预设: typename01_integer
+        常量: 1
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 重生
+        预设: typename01_integer
+        常量: 1
+    YDWETimerStartMultiple
+        函数: CreateTimer
+        常量: 0.10
+        预设: PeriodicOptionPeriodic
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: cs
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+        动作
+            CommentString
+                常量: 每0.1秒判定一次存活并尝试发动治疗
+            IfThenElseMultiple
+                条件
+                    OperatorCompareBoolean
+                        函数: IsUnitAliveBJ
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: cs
+                        预设: OperatorEqualENE
+                        常量: true
+                动作
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareReal
+                                函数: GetUnitLifePercent
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: cs
+                                预设: OperatorLess
+                                常量: 100.00
+                        动作
+                            IssueImmediateOrder
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                预设: UnitOrderAvatar
+                            YDWETimerStartMultiple
+                                函数: CreateTimer
+                                常量: 2.00
+                                预设: PeriodicOptionOneTime
+                                动作
+                                动作
+                                    IssueTargetOrder
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: cs
+                                        预设: UnitOrderAttackUnit
+                                        变量: gg_unit_N000_0001
+                                    YDWETimerStartFlush
+                动作
+                    YDWETimerStartFlush

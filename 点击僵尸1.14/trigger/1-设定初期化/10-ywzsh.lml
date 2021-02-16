@@ -1,0 +1,106 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: u
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 触发单位1
+    YDWESetAnyTypeLocalVariable
+        预设: typename13_player
+        常量: p
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 触发玩家1
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: k
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename07_unit
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: u
+            常量: 协同减伤
+    IfThenElseMultiple
+        条件
+            OperatorCompareReal
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: k
+                预设: OperatorLess
+                常量: 100.00
+        动作
+            IfThenElseMultiple
+                条件
+                    OperatorCompareReal
+                        函数: YDWELoadAnyTypeDataByUserData
+                            预设: typename07_unit
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: u
+                            常量: 护盾时间
+                        预设: OperatorLessEq
+                        常量: 0.00
+                动作
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename07_unit
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: u
+                                    常量: 伤害护盾
+                                预设: OperatorGreater
+                                常量: 0
+                        动作
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename04_string
+                                常量: st1Var
+                                常量: 触发单位2
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: u
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename04_string
+                                常量: st1Var
+                                常量: 触发玩家2
+                                预设: typename13_player
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: p
+                            CommentString
+                                常量: 首先被点击的单位有伤害护盾，而且伤害护盾不在生效期间内
+                            TriggerExecute
+                                变量: gg_trg_shanghaihudun
+                        动作
+                            UnitDamageTargetBJ
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename13_player
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: p
+                                    常量: 单位
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: u
+                                函数: OperatorReal
+                                    函数: I2R
+                                        函数: YDWELoadAnyTypeDataByUserData
+                                            预设: typename13_player
+                                            函数: YDWEGetAnyTypeLocalVariable
+                                                常量: p
+                                            常量: 点击伤害
+                                    预设: OperatorMultiply
+                                    函数: YDWEOperatorReal3
+                                        常量: 1.00
+                                        预设: YOperatorSubtract
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: k
+                                        预设: YOperatorDivide
+                                        常量: 100.00
+                                预设: AttackTypeChaos
+                                预设: DamageTypeUniversal
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: u
+                                常量: 点击间距
+                                预设: typename02_real
+                                常量: 0.00

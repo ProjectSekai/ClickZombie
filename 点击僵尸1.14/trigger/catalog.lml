@@ -1,0 +1,64 @@
+1-设定初期化: 设定初期化
+    01-ch: ch
+    02-kj: kj
+        禁用
+    03------------: -----------
+        注释
+    04-dmb: dmb
+    05------------: -----------
+        注释
+    06-dj: dj
+    07-shanghai: shanghai
+    08-yysh: yysh
+    09-xwxzhsh: xwxzhsh
+    10-ywzsh: ywzsh
+    11-cxsh: cxsh
+    12-shanghaihudun: shanghaihudun
+    13-sm: sm
+    14-gameStart: gameStart
+    15-shijieTimer: shijieTimer
+    16------------: -----------
+        注释
+    17-Bossmove: Bossmove
+    18-Bossmae: Bossmae
+    19-Bossset: Bossset
+    20-BossJYset: BossJYset
+    21-jingYingCreate: jingYingCreate
+    22-jingYingSetUp: jingYingSetUp
+    23-jingYingYinYing: jingYingYinYing
+    24-jingYingMengMa: jingYingMengMa
+    25-jingYingXuWuXingZhe: jingYingXuWuXingZhe
+    26-jingYingYiWangZhe: jingYingYiWangZhe
+    27------------: -----------
+        注释
+    28-shiJieDengJi: shiJieDengJi
+    29-shuaBing: shuaBing
+    30-shijieUP: shijieUP
+    31------------: -----------
+        注释
+    32-right: right
+    33-left: left
+    34-sd: sd
+    35------------: -----------
+        注释
+    36-smhf: smhf
+    37-pclc: pclc
+    38------------: -----------
+        注释
+    39-f91: f91
+    40------------: -----------
+        注释
+    41-yyzt: yyzt
+    42-mmzt: mmzt
+    43-xwzt: xwzt
+    44-ywzzt: ywzzt
+    45-ceshi: ceshi
+        禁用
+    46-mbjs: mbjs
+        禁用
+    47-dzaapi: dzaapi
+        禁用
+    48-s_y: s/y
+        禁用
+    49-s_y2: s/y2
+        禁用

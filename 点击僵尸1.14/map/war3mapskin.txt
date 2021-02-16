@@ -1,0 +1,2 @@
+[CustomSkin]
+MinimapHeroTexture=UI\Widgets\Console\Human\human-minimap-ally-off.blp

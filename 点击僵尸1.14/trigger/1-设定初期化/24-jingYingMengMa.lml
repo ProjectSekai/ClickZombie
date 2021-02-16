@@ -1,0 +1,81 @@
+事件
+    YDWEDisableRegister
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: cs
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 精英
+    YDWETimerStartMultiple
+        函数: CreateTimer
+        常量: 0.10
+        预设: PeriodicOptionPeriodic
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: cs
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+        动作
+            CommentString
+                常量: 每3.5秒判定一次存活
+            IfThenElseMultiple
+                条件
+                    OperatorCompareBoolean
+                        函数: IsUnitAliveBJ
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: cs
+                        预设: OperatorEqualENE
+                        常量: true
+                动作
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename14_location
+                        常量: ss
+                        函数: GetUnitLoc
+                            变量: gg_unit_N000_0001
+                    YDWESetAnyTypeLocalVariable
+                        预设: typename14_location
+                        常量: s2
+                        函数: GetUnitLoc
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: cs
+                    CommentString
+                        常量: 同时猛犸在靠近圣贤750码范围内才能放技能
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareReal
+                                函数: DistanceBetweenPoints
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: ss
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: s2
+                                预设: OperatorLess
+                                常量: 750.00
+                        动作
+                            IssueImmediateOrder
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                预设: UnitOrderAvatar
+                            YDWETimerStartMultiple
+                                函数: CreateTimer
+                                常量: 0.75
+                                预设: PeriodicOptionOneTime
+                                动作
+                                动作
+                                    IssueTargetOrder
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: cs
+                                        预设: UnitOrderAttackUnit
+                                        变量: gg_unit_N000_0001
+                                    YDWETimerStartFlush
+                    RemoveLocation
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: ss
+                    RemoveLocation
+                        函数: YDWEGetAnyTypeLocalVariable
+                            常量: s2
+                动作
+                    YDWETimerStartFlush

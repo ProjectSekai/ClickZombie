@@ -1,0 +1,956 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename07_unit
+        常量: cs
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 精英
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: xlbl
+        函数: YDWELoadAnyTypeDataByUserData
+            预设: typename04_string
+            常量: st1Var
+            常量: 血量倍率
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: csxl
+        函数: GetUnitStateSwap
+            预设: UnitStateLife
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: cs
+    YDWEGeneralBounsSystemUnitSetBonus
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        预设: bonusTypeA
+        预设: unitstatechangetypeC
+        函数: R2I
+            函数: OperatorReal
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: csxl
+                预设: OperatorMultiply
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: xlbl
+    IssuePointOrder
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        预设: UnitOrderMove
+        常量: 0
+        常量: 0
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 速度
+        预设: typename02_real
+        常量: 14.00
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 献祭伤害
+        预设: typename02_real
+        常量: 5.00
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 随机移动
+        预设: typename04_string
+        常量: auto
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 嚎叫
+        预设: typename01_integer
+        常量: 90
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 蓄力
+        预设: typename01_integer
+        常量: 1
+    YDWESaveAnyTypeDataByUserData
+        预设: typename07_unit
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: cs
+        常量: 精英剩余
+        预设: typename01_integer
+        常量: 0
+    YDWESetAnyTypeLocalVariable
+        预设: typename02_real
+        常量: csxl
+        函数: GetUnitStateSwap
+            预设: UnitStateLife
+            函数: YDWEGetAnyTypeLocalVariable
+                常量: cs
+    YDWESetAnyTypeLocalVariable
+        预设: typename20_effect
+        常量: wxs
+        函数: AddSpecialEffectTarget
+            常量: Abilities\Spells\NightElf\Immolation\ImmolationTarget.mdl
+            变量: gg_unit_N000_0001
+            常量: origin
+    YDWETimerStartMultiple
+        函数: CreateTimer
+        常量: 1.50
+        预设: PeriodicOptionPeriodic
+        动作
+            YDWESetAnyTypeLocalVariable
+                预设: typename07_unit
+                常量: cs
+                函数: YDWEGetAnyTypeLocalVariable
+                    常量: cs
+        动作
+            IfThenElseMultiple
+                条件
+                    OperatorCompareBoolean
+                        函数: IsUnitAliveBJ
+                            函数: YDWEGetAnyTypeLocalVariable
+                                常量: cs
+                        预设: OperatorEqualENE
+                        常量: true
+                动作
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareReal
+                                函数: GetUnitState
+                                    变量: gg_unit_N000_0001
+                                    预设: UnitStateLife
+                                预设: OperatorGreater
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename07_unit
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: cs
+                                    常量: 献祭伤害
+                        动作
+                            SetUnitLifeBJ
+                                变量: gg_unit_N000_0001
+                                函数: OperatorReal
+                                    函数: GetUnitStateSwap
+                                        预设: UnitStateLife
+                                        变量: gg_unit_N000_0001
+                                    预设: OperatorSubtract
+                                    函数: YDWELoadAnyTypeDataByUserData
+                                        预设: typename07_unit
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: cs
+                                        常量: 献祭伤害
+                            MultiboardSetItemValue
+                                函数: MultiboardGetItem
+                                    预设: bj_lastCreatedMultiboard
+                                    常量: 0
+                                    常量: 0
+                                函数: OperatorString
+                                    常量: 圣贤生命值：
+                                    函数: OperatorString
+                                        函数: I2S
+                                            函数: R2I
+                                                函数: GetUnitState
+                                                    变量: gg_unit_N000_0001
+                                                    预设: UnitStateLife
+                                        函数: OperatorString
+                                            常量: /
+                                            函数: I2S
+                                                函数: R2I
+                                                    函数: GetUnitStateSwap
+                                                        预设: UnitStateMaxLife
+                                                        变量: gg_unit_N000_0001
+                        动作
+                            CustomDefeatBJ
+                                预设: Player00
+                                函数: OperatorString
+                                    常量: 你们成功抵御了：
+                                    函数: OperatorString
+                                        函数: I2S
+                                            函数: YDWELoadAnyTypeDataByUserData
+                                                预设: typename04_string
+                                                常量: st1Var
+                                                常量: 世界等级
+                                        常量: 波敌人。
+                            CustomDefeatBJ
+                                预设: Player01
+                                函数: OperatorString
+                                    常量: 你们成功抵御了：
+                                    函数: OperatorString
+                                        函数: I2S
+                                            函数: YDWELoadAnyTypeDataByUserData
+                                                预设: typename04_string
+                                                常量: st1Var
+                                                常量: 世界等级
+                                        常量: 波敌人。
+                            CustomDefeatBJ
+                                预设: Player02
+                                函数: OperatorString
+                                    常量: 你们成功抵御了：
+                                    函数: OperatorString
+                                        函数: I2S
+                                            函数: YDWELoadAnyTypeDataByUserData
+                                                预设: typename04_string
+                                                常量: st1Var
+                                                常量: 世界等级
+                                        常量: 波敌人。
+                            CustomDefeatBJ
+                                预设: Player03
+                                函数: OperatorString
+                                    常量: 你们成功抵御了：
+                                    函数: OperatorString
+                                        函数: I2S
+                                            函数: YDWELoadAnyTypeDataByUserData
+                                                预设: typename04_string
+                                                常量: st1Var
+                                                常量: 世界等级
+                                        常量: 波敌人。
+                            CustomDefeatBJ
+                                预设: Player04
+                                函数: OperatorString
+                                    常量: 你们成功抵御了：
+                                    函数: OperatorString
+                                        函数: I2S
+                                            函数: YDWELoadAnyTypeDataByUserData
+                                                预设: typename04_string
+                                                常量: st1Var
+                                                常量: 世界等级
+                                        常量: 波敌人。
+                            CustomDefeatBJ
+                                预设: Player05
+                                函数: OperatorString
+                                    常量: 你们成功抵御了：
+                                    函数: OperatorString
+                                        函数: I2S
+                                            函数: YDWELoadAnyTypeDataByUserData
+                                                预设: typename04_string
+                                                常量: st1Var
+                                                常量: 世界等级
+                                        常量: 波敌人。
+                    CommentString
+                        常量: 献祭技能组
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareReal
+                                函数: GetUnitLifePercent
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: cs
+                                预设: OperatorLessEq
+                                函数: I2R
+                                    函数: YDWELoadAnyTypeDataByUserData
+                                        预设: typename07_unit
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: cs
+                                        常量: 嚎叫
+                        动作
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                常量: 嚎叫
+                                预设: typename01_integer
+                                函数: OperatorInt
+                                    函数: YDWELoadAnyTypeDataByUserData
+                                        预设: typename07_unit
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: cs
+                                        常量: 嚎叫
+                                    预设: OperatorSubtract
+                                    常量: 10
+                            YDWESetAnyTypeLocalVariable
+                                预设: typename20_effect
+                                常量: wxs2
+                                函数: AddSpecialEffectTarget
+                                    常量: Abilities\Spells\Other\HowlOfTerror\HowlTarget.mdl
+                                    变量: gg_unit_N000_0001
+                                    常量: origin
+                            YDWESetAnyTypeLocalVariable
+                                预设: typename20_effect
+                                常量: wxs3
+                                函数: AddSpecialEffectTarget
+                                    常量: Abilities\Spells\Other\Volcano\VolcanoDeath.mdl
+                                    变量: gg_unit_N000_0001
+                                    常量: origin
+                            YDWETimerStartMultiple
+                                函数: CreateTimer
+                                常量: 3.00
+                                预设: PeriodicOptionOneTime
+                                动作
+                                动作
+                                    DestroyEffectBJ
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: wxs2
+                                    DestroyEffectBJ
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: wxs3
+                                    YDWETimerStartFlush
+                            IfThenElseMultiple
+                                条件
+                                    OperatorCompareReal
+                                        函数: GetUnitState
+                                            变量: gg_unit_N000_0001
+                                            预设: UnitStateLife
+                                        预设: OperatorGreater
+                                        常量: 60.00
+                                动作
+                                    SetUnitLifeBJ
+                                        变量: gg_unit_N000_0001
+                                        函数: OperatorReal
+                                            函数: GetUnitStateSwap
+                                                预设: UnitStateLife
+                                                变量: gg_unit_N000_0001
+                                            预设: OperatorSubtract
+                                            常量: 60.00
+                                    MultiboardSetItemValue
+                                        函数: MultiboardGetItem
+                                            预设: bj_lastCreatedMultiboard
+                                            常量: 0
+                                            常量: 0
+                                        函数: OperatorString
+                                            常量: 圣贤生命值：
+                                            函数: OperatorString
+                                                函数: I2S
+                                                    函数: R2I
+                                                        函数: GetUnitState
+                                                            变量: gg_unit_N000_0001
+                                                            预设: UnitStateLife
+                                                函数: OperatorString
+                                                    常量: /
+                                                    函数: I2S
+                                                        函数: R2I
+                                                            函数: GetUnitStateSwap
+                                                                预设: UnitStateMaxLife
+                                                                变量: gg_unit_N000_0001
+                                    DisplayTextToPlayer
+                                        预设: Player00
+                                        常量: 0
+                                        常量: 0
+                                        函数: YDWEOperatorString3
+                                            常量: 嚎叫已发动，圣贤剩余生命值为：
+                                            函数: R2S
+                                                函数: GetUnitStateSwap
+                                                    预设: UnitStateLife
+                                                    变量: gg_unit_N000_0001
+                                            常量: 
+                                动作
+                                    CustomDefeatBJ
+                                        预设: Player00
+                                        函数: OperatorString
+                                            常量: 你们成功抵御了：
+                                            函数: OperatorString
+                                                函数: I2S
+                                                    函数: YDWELoadAnyTypeDataByUserData
+                                                        预设: typename04_string
+                                                        常量: st1Var
+                                                        常量: 世界等级
+                                                常量: 波敌人。
+                                    CustomDefeatBJ
+                                        预设: Player01
+                                        函数: OperatorString
+                                            常量: 你们成功抵御了：
+                                            函数: OperatorString
+                                                函数: I2S
+                                                    函数: YDWELoadAnyTypeDataByUserData
+                                                        预设: typename04_string
+                                                        常量: st1Var
+                                                        常量: 世界等级
+                                                常量: 波敌人。
+                                    CustomDefeatBJ
+                                        预设: Player02
+                                        函数: OperatorString
+                                            常量: 你们成功抵御了：
+                                            函数: OperatorString
+                                                函数: I2S
+                                                    函数: YDWELoadAnyTypeDataByUserData
+                                                        预设: typename04_string
+                                                        常量: st1Var
+                                                        常量: 世界等级
+                                                常量: 波敌人。
+                                    CustomDefeatBJ
+                                        预设: Player03
+                                        函数: OperatorString
+                                            常量: 你们成功抵御了：
+                                            函数: OperatorString
+                                                函数: I2S
+                                                    函数: YDWELoadAnyTypeDataByUserData
+                                                        预设: typename04_string
+                                                        常量: st1Var
+                                                        常量: 世界等级
+                                                常量: 波敌人。
+                                    CustomDefeatBJ
+                                        预设: Player04
+                                        函数: OperatorString
+                                            常量: 你们成功抵御了：
+                                            函数: OperatorString
+                                                函数: I2S
+                                                    函数: YDWELoadAnyTypeDataByUserData
+                                                        预设: typename04_string
+                                                        常量: st1Var
+                                                        常量: 世界等级
+                                                常量: 波敌人。
+                                    CustomDefeatBJ
+                                        预设: Player05
+                                        函数: OperatorString
+                                            常量: 你们成功抵御了：
+                                            函数: OperatorString
+                                                函数: I2S
+                                                    函数: YDWELoadAnyTypeDataByUserData
+                                                        预设: typename04_string
+                                                        常量: st1Var
+                                                        常量: 世界等级
+                                                常量: 波敌人。
+                            CommentString
+                                常量: 顺路判定个精英
+                            IfThenElseMultiple
+                                条件
+                                    OrMultiple
+                                        条件
+                                            OperatorCompareInteger
+                                                函数: YDWELoadAnyTypeDataByUserData
+                                                    预设: typename07_unit
+                                                    函数: YDWEGetAnyTypeLocalVariable
+                                                        常量: cs
+                                                    常量: 嚎叫
+                                                预设: OperatorEqual
+                                                常量: 40
+                                            OperatorCompareInteger
+                                                函数: YDWELoadAnyTypeDataByUserData
+                                                    预设: typename07_unit
+                                                    函数: YDWEGetAnyTypeLocalVariable
+                                                        常量: cs
+                                                    常量: 嚎叫
+                                                预设: OperatorEqual
+                                                常量: 30
+                                            OperatorCompareInteger
+                                                函数: YDWELoadAnyTypeDataByUserData
+                                                    预设: typename07_unit
+                                                    函数: YDWEGetAnyTypeLocalVariable
+                                                        常量: cs
+                                                    常量: 嚎叫
+                                                预设: OperatorEqual
+                                                常量: 20
+                                            OperatorCompareInteger
+                                                函数: YDWELoadAnyTypeDataByUserData
+                                                    预设: typename07_unit
+                                                    函数: YDWEGetAnyTypeLocalVariable
+                                                        常量: cs
+                                                    常量: 嚎叫
+                                                预设: OperatorEqual
+                                                常量: 10
+                                            OperatorCompareInteger
+                                                函数: YDWELoadAnyTypeDataByUserData
+                                                    预设: typename07_unit
+                                                    函数: YDWEGetAnyTypeLocalVariable
+                                                        常量: cs
+                                                    常量: 嚎叫
+                                                预设: OperatorEqual
+                                                常量: 0
+                                动作
+                                    IfThenElseMultiple
+                                        条件
+                                            OperatorCompareInteger
+                                                函数: YDWELoadAnyTypeDataByUserData
+                                                    预设: typename07_unit
+                                                    函数: YDWEGetAnyTypeLocalVariable
+                                                        常量: cs
+                                                    常量: 嚎叫
+                                                预设: OperatorEqual
+                                                常量: 40
+                                        动作
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英1
+                                                预设: typename08_unitcode
+                                                常量: n006
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英2
+                                                预设: typename08_unitcode
+                                                常量: n00A
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英3
+                                                预设: typename08_unitcode
+                                                常量: n00A
+                                            YDWEForLoopLocVarMultiple
+                                                常量: p
+                                                常量: 1
+                                                常量: 6
+                                                动作
+                                                    DisplayTextToPlayer
+                                                        函数: ConvertedPlayer
+                                                            函数: YDWEForLoopLocVarIndex
+                                                                常量: p
+                                                        常量: 0
+                                                        常量: 0
+                                                        函数: YDWEOperatorString3
+                                                            常量: 第一组精英已出现，该组合为：
+                                                            常量: 刺蛇+阴影+阴影
+                                                            常量: 
+                                                    DisplayTextToPlayer
+                                                        函数: ConvertedPlayer
+                                                            函数: YDWEForLoopLocVarIndex
+                                                                常量: p
+                                                        常量: 0
+                                                        常量: 0
+                                                        常量: 提示：精英在场时，来自Boss的灼烧伤害将会降低
+                                            TriggerExecute
+                                                变量: gg_trg_BossJYset
+                                    IfThenElseMultiple
+                                        条件
+                                            OperatorCompareInteger
+                                                函数: YDWELoadAnyTypeDataByUserData
+                                                    预设: typename07_unit
+                                                    函数: YDWEGetAnyTypeLocalVariable
+                                                        常量: cs
+                                                    常量: 嚎叫
+                                                预设: OperatorEqual
+                                                常量: 30
+                                        动作
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英1
+                                                预设: typename08_unitcode
+                                                常量: n006
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英2
+                                                预设: typename08_unitcode
+                                                常量: n00A
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英3
+                                                预设: typename08_unitcode
+                                                常量: n007
+                                            YDWEForLoopLocVarMultiple
+                                                常量: p
+                                                常量: 1
+                                                常量: 6
+                                                动作
+                                                    DisplayTextToPlayer
+                                                        函数: ConvertedPlayer
+                                                            函数: YDWEForLoopLocVarIndex
+                                                                常量: p
+                                                        常量: 0
+                                                        常量: 0
+                                                        函数: YDWEOperatorString3
+                                                            常量: 第二组精英已出现，该组合为：
+                                                            常量: 刺蛇+阴影+猛犸
+                                                            常量: 
+                                                    DisplayTextToPlayer
+                                                        函数: ConvertedPlayer
+                                                            函数: YDWEForLoopLocVarIndex
+                                                                常量: p
+                                                        常量: 0
+                                                        常量: 0
+                                                        常量: 提示：精英在场时，来自Boss的灼烧伤害将会降低
+                                            TriggerExecute
+                                                变量: gg_trg_BossJYset
+                                    IfThenElseMultiple
+                                        条件
+                                            OperatorCompareInteger
+                                                函数: YDWELoadAnyTypeDataByUserData
+                                                    预设: typename07_unit
+                                                    函数: YDWEGetAnyTypeLocalVariable
+                                                        常量: cs
+                                                    常量: 嚎叫
+                                                预设: OperatorEqual
+                                                常量: 20
+                                        动作
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英1
+                                                预设: typename08_unitcode
+                                                常量: n006
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英2
+                                                预设: typename08_unitcode
+                                                常量: n00A
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英3
+                                                预设: typename08_unitcode
+                                                常量: n001
+                                            YDWEForLoopLocVarMultiple
+                                                常量: p
+                                                常量: 1
+                                                常量: 6
+                                                动作
+                                                    DisplayTextToPlayer
+                                                        函数: ConvertedPlayer
+                                                            函数: YDWEForLoopLocVarIndex
+                                                                常量: p
+                                                        常量: 0
+                                                        常量: 0
+                                                        函数: YDWEOperatorString3
+                                                            常量: 第三组精英已出现，该组合为：
+                                                            常量: 刺蛇+阴影+虚无行者
+                                                            常量: 
+                                                    DisplayTextToPlayer
+                                                        函数: ConvertedPlayer
+                                                            函数: YDWEForLoopLocVarIndex
+                                                                常量: p
+                                                        常量: 0
+                                                        常量: 0
+                                                        常量: 提示：精英在场时，来自Boss的灼烧伤害将会降低
+                                            TriggerExecute
+                                                变量: gg_trg_BossJYset
+                                    IfThenElseMultiple
+                                        条件
+                                            OperatorCompareInteger
+                                                函数: YDWELoadAnyTypeDataByUserData
+                                                    预设: typename07_unit
+                                                    函数: YDWEGetAnyTypeLocalVariable
+                                                        常量: cs
+                                                    常量: 嚎叫
+                                                预设: OperatorEqual
+                                                常量: 10
+                                        动作
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英1
+                                                预设: typename08_unitcode
+                                                常量: n006
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英2
+                                                预设: typename08_unitcode
+                                                常量: n007
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英3
+                                                预设: typename08_unitcode
+                                                常量: n001
+                                            YDWEForLoopLocVarMultiple
+                                                常量: p
+                                                常量: 1
+                                                常量: 6
+                                                动作
+                                                    DisplayTextToPlayer
+                                                        函数: ConvertedPlayer
+                                                            函数: YDWEForLoopLocVarIndex
+                                                                常量: p
+                                                        常量: 0
+                                                        常量: 0
+                                                        函数: YDWEOperatorString3
+                                                            常量: 第四组精英已出现，该组合为：
+                                                            常量: 刺蛇+猛犸+虚无行者
+                                                            常量: 
+                                                    DisplayTextToPlayer
+                                                        函数: ConvertedPlayer
+                                                            函数: YDWEForLoopLocVarIndex
+                                                                常量: p
+                                                        常量: 0
+                                                        常量: 0
+                                                        常量: 提示：精英在场时，来自Boss的灼烧伤害将会降低
+                                            TriggerExecute
+                                                变量: gg_trg_BossJYset
+                                    IfThenElseMultiple
+                                        条件
+                                            OperatorCompareInteger
+                                                函数: YDWELoadAnyTypeDataByUserData
+                                                    预设: typename07_unit
+                                                    函数: YDWEGetAnyTypeLocalVariable
+                                                        常量: cs
+                                                    常量: 嚎叫
+                                                预设: OperatorEqual
+                                                常量: 0
+                                        动作
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英1
+                                                预设: typename08_unitcode
+                                                常量: n004
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英2
+                                                预设: typename08_unitcode
+                                                常量: n007
+                                            YDWESaveAnyTypeDataByUserData
+                                                预设: typename07_unit
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: cs
+                                                常量: 精英3
+                                                预设: typename08_unitcode
+                                                常量: n001
+                                            DisplayTextToForce
+                                                函数: GetPlayersAll
+                                                常量: Boss血量已低于10%，最后一组精英入场：猛犸+虚无行者+遗忘者
+                                            TriggerExecute
+                                                变量: gg_trg_BossJYset
+                    CommentString
+                        常量: 嚎叫技能组顺路判定个精英
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename07_unit
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: cs
+                                    常量: 精英剩余
+                                预设: OperatorGreater
+                                常量: 0
+                        动作
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                常量: 速度
+                                预设: typename02_real
+                                常量: 6.00
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                常量: 献祭伤害
+                                预设: typename02_real
+                                常量: 1.25
+                        动作
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                常量: 速度
+                                预设: typename02_real
+                                常量: 14.00
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                常量: 献祭伤害
+                                预设: typename02_real
+                                常量: 5.00
+                    CommentString
+                        常量: 精英在场时的判定
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareReal
+                                函数: GetUnitLifePercent
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: cs
+                                预设: OperatorLessEq
+                                常量: 5.00
+                            OperatorCompareInteger
+                                函数: YDWELoadAnyTypeDataByUserData
+                                    预设: typename07_unit
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: cs
+                                    常量: 蓄力
+                                预设: OperatorEqual
+                                常量: 1
+                        动作
+                            YDWESaveAnyTypeDataByUserData
+                                预设: typename07_unit
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: cs
+                                常量: 蓄力
+                                预设: typename01_integer
+                                常量: 2
+                            DisplayTextToForce
+                                函数: GetPlayersAll
+                                常量: Boss正在释放强力的蓄力技能，使用击退技能可以将其打断
+                            YDWESetAnyTypeLocalVariable
+                                预设: typename14_location
+                                常量: d
+                                函数: GetUnitLoc
+                                    变量: gg_unit_N000_0001
+                            YDWESetAnyTypeLocalVariable
+                                预设: typename07_unit
+                                常量: tx1
+                                函数: CreateUnitAtLoc
+                                    预设: Player00
+                                    常量: h000
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: d
+                                    常量: 0.00
+                            SetUnitAnimationByIndex
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: tx1
+                                常量: 0
+                            SetUnitScale
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: tx1
+                                常量: 4.00
+                                常量: 4.00
+                                常量: 4.00
+                            RemoveLocation
+                                函数: YDWEGetAnyTypeLocalVariable
+                                    常量: d
+                            YDWESetAnyTypeLocalVariable
+                                预设: typename20_effect
+                                常量: wxs
+                                函数: AddSpecialEffectTarget
+                                    常量: Abilities\Spells\Demon\DarkConversion\ZombifyTarget.mdl
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: cs
+                                    常量: origin
+                            YDWESetAnyTypeLocalVariable
+                                预设: typename20_effect
+                                常量: wxs2
+                                函数: AddSpecialEffectTarget
+                                    常量: war3mapImported\IonCannon.mdl
+                                    函数: YDWEGetAnyTypeLocalVariable
+                                        常量: tx1
+                                    常量: origin
+                            YDWETimerStartMultiple
+                                函数: CreateTimer
+                                常量: 0.10
+                                预设: PeriodicOptionPeriodic
+                                动作
+                                    YDWESetAnyTypeLocalVariable
+                                        预设: typename07_unit
+                                        常量: cs
+                                        函数: YDWEGetAnyTypeLocalVariable
+                                            常量: cs
+                                    YDWESetAnyTypeLocalVariable
+                                        预设: typename02_real
+                                        常量: ter
+                                        常量: 6.80
+                                动作
+                                    YDWESetAnyTypeLocalVariable
+                                        预设: typename01_integer
+                                        常量: ccy
+                                        函数: YDWELoadAnyTypeDataByUserData
+                                            预设: typename07_unit
+                                            函数: YDWEGetAnyTypeLocalVariable
+                                                常量: cs
+                                            常量: 蓄力
+                                    IfThenElseMultiple
+                                        条件
+                                            OperatorCompareReal
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: ter
+                                                预设: OperatorLess
+                                                常量: 0.00
+                                            OperatorCompareInteger
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: ccy
+                                                预设: OperatorEqual
+                                                常量: 2
+                                        动作
+                                            DestroyEffectBJ
+                                                函数: YDWEGetAnyTypeLocalVariable
+                                                    常量: wxs
+                                            DisplayTextToForce
+                                                函数: GetPlayersAll
+                                                常量: Boss大招已发动
+                                            CommentString
+                                                常量: 炸了炸了
+                                            SetUnitLifeBJ
+                                                变量: gg_unit_N000_0001
+                                                常量: 5.00
+                                            YDWETimerStartFlush
+                                        动作
+                                            YDWESetAnyTypeLocalVariable
+                                                预设: typename02_real
+                                                常量: ter
+                                                函数: OperatorReal
+                                                    函数: YDWEGetAnyTypeLocalVariable
+                                                        常量: ter
+                                                    预设: OperatorSubtract
+                                                    常量: 0.10
+                                            IfThenElseMultiple
+                                                条件
+                                                    OperatorCompareInteger
+                                                        函数: YDWEGetAnyTypeLocalVariable
+                                                            常量: ccy
+                                                        预设: OperatorEqual
+                                                        常量: 0
+                                                动作
+                                                    DestroyEffectBJ
+                                                        函数: YDWEGetAnyTypeLocalVariable
+                                                            常量: wxs
+                                                    DestroyEffectBJ
+                                                        函数: YDWEGetAnyTypeLocalVariable
+                                                            常量: wxs2
+                                                    SetUnitFlyHeightBJ
+                                                        函数: YDWEGetAnyTypeLocalVariable
+                                                            常量: tx1
+                                                        常量: 99999.00
+                                                        常量: 0.00
+                                                    RemoveUnit
+                                                        函数: YDWEGetAnyTypeLocalVariable
+                                                            常量: tx1
+                                                    DisplayTextToForce
+                                                        函数: GetPlayersAll
+                                                        常量: 成功打断了Boss的蓄力技能，要是吃下那一击，肯定直接没了把
+                                                    SetUnitLifeBJ
+                                                        函数: YDWEGetAnyTypeLocalVariable
+                                                            常量: cs
+                                                        函数: OperatorReal
+                                                            函数: GetUnitStateSwap
+                                                                预设: UnitStateMaxLife
+                                                                函数: YDWEGetAnyTypeLocalVariable
+                                                                    常量: cs
+                                                            预设: OperatorMultiply
+                                                            常量: 0.20
+                                                    YDWESaveAnyTypeDataByUserData
+                                                        预设: typename07_unit
+                                                        函数: YDWEGetAnyTypeLocalVariable
+                                                            常量: cs
+                                                        常量: 献祭伤害
+                                                        预设: typename02_real
+                                                        常量: 10.00
+                                                    YDWETimerStartFlush
+                                                动作
+                                                    禁用: DisplayTextToForce
+                                                        函数: GetPlayersAll
+                                                        常量: 快点，时间不多了
+                    CommentString
+                        常量: Boss大招的判定
+                动作
+                    CustomVictoryBJ
+                        预设: Player00
+                        预设: UseSkipOptionUse
+                        预设: UseSkipOptionUse
+                    CustomVictoryBJ
+                        预设: Player01
+                        预设: UseSkipOptionUse
+                        预设: UseSkipOptionUse
+                    CustomVictoryBJ
+                        预设: Player02
+                        预设: UseSkipOptionUse
+                        预设: UseSkipOptionUse
+                    CustomVictoryBJ
+                        预设: Player03
+                        预设: UseSkipOptionUse
+                        预设: UseSkipOptionUse
+                    CustomVictoryBJ
+                        预设: Player04
+                        预设: UseSkipOptionUse
+                        预设: UseSkipOptionUse
+                    CustomVictoryBJ
+                        预设: Player05
+                        预设: UseSkipOptionUse
+                        预设: UseSkipOptionUse
+                    YDWETimerStartFlush

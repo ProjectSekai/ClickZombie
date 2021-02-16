@@ -1,0 +1,127 @@
+事件
+    TriggerRegisterTimerEventSingle
+        常量: 0.20
+条件
+动作
+    禁用: CreateQuestBJ
+        预设: QuestTypeReqDiscovered
+        常量: 玩法说明
+        常量: '圣贤开始释放永恒的魔法，
+在施法的途中却引来了入侵者，
+使用你们的手指，击杀这些不请自来的入侵者把。
+
+游戏中使用方向键来控制操作视角
+也可以输入-zoom来改变为特殊视角'
+        常量: ReplaceableTextures\CommandButtons\BTNUnholyFrenzy.blp
+    禁用: CreateQuestBJ
+        预设: QuestTypeOptDiscovered
+        常量: 作者的一席话
+        常量: '天琅系列早在13年12月就开始构建世界观，
+但实际情况却不尽人意，
+本篇-永恒魔法的咏唱，
+讲述的是一位有磅礴野心的圣贤，妄图召唤信标来施法偶然所得的永恒魔法，并暗中勾结了几个小伙伴，最终被亡灵大军淹没的故事。
+我并不能在这里附出这位圣贤的名字。
+与此同时，于本图一起发行的有：
+天琅：法则的终端1 [已在内部发布，已停止更新]
+天琅：深渊 [已在内部发布，地图损坏导致停止更新]
+天琅：永恒魔法的咏唱 [已发布，但不确定会不会继续更新]
+天琅：被引向的朝圣之路 [未发布，具体时间待定]
+天琅：阿尔若斯的决心 [未发布，具体时间待定]
+天琅：法则的终端2 [未发布，具体时间待定]
+天琅：沉沦与本该被救济的世界 [未发布，具体时间待定]
+'
+        常量: ReplaceableTextures\CommandButtons\BTNMechanicalCritter.blp
+    禁用: CreateQuestBJ
+        预设: QuestTypeOptDiscovered
+        常量: 声明、感谢与联系方式
+        常量: '虽然有些人已经离开了，但有些人在天琅的发展上提供了不可或缺的力量。
+soros其实早在14年就已经退出魔兽界了，
+本图的地形是我找soros申请并且经过30个小时等待后soros才看见并同意，于是我直接取用网络上[点击僵尸]地图的地形，其他所有的项目都是我自己完成的。
+另外：
+本图已开放未加密版，仅供特殊的人进行交流学习。
+【生死盟】星域な龙族 348052097 [不定时对外开放]
+魔兽争霸3 161470552 [本部 永久对外开放]
+魔兽争霸3特约群 101326057 [分群 只招收weer]
+我的QQ：569145850 邮箱：e-hentai@qq.com'
+        常量: ReplaceableTextures\CommandButtons\BTNMechanicalCritter.blp
+    CommentString
+        常量: 曾经的曾经()
+    CreateQuestBJ
+        预设: QuestTypeOptDiscovered
+        常量: 玩法说明
+        常量: '圣贤开始释放永恒的魔法，
+在施法的途中却引来了入侵者，
+使用你们的手指，击杀这些不请自来的入侵者把。'
+        常量: ReplaceableTextures\CommandButtons\BTNUnholyFrenzy.blp
+    CommentString
+        常量: 要求左边，可选右边
+    CreateQuestBJ
+        预设: QuestTypeReqDiscovered
+        常量: 1.13更新公告
+        常量: '玩家倍率的代码部分存在问题 -> 已重写
+猛犸放技能时攻击会扭头 -> 已修复
+遗忘者释放技能过快 -> 点击间距未实装，已修正
+阴影能看见 -> 修复了阴影能看见的bug
+左右方向键跟技能快捷键QW距离太远，鼠标要点左键只能用一只手操作很麻烦，能不能改一下     ->现在镜头组修改为技能模拟，快捷键就用A和D来控制左和右，而技能则变成了S和W
+墓碑能点，金币+5 -> 修复了墓碑能点的bug，并且给墓碑添加了小地图显示
+击退之后变蓝之后就一直蓝了，还看不见 -> 取消了击退技能降低透明度，修复一直是蓝的问题
+
+地图平衡型调整：
+虚无行者的技能(治疗) 该技能在现版本几乎使虚无行者变成无敌的存在，2秒cd的0.75*2伤害盾，发动时还带回血，现在我们将这个技能的冷却时间改为5秒
+治疗技能的治疗量提升 5->15
+击退技能调整：cd70->8 消耗200->50 击退幅度450->510 范围512->532
+金币现在已经更改为团队共享
+刺蛇 -> 血量120->100 ，模型略微放大
+阴影 -> 血量80->120，模型略微放大
+猛犸 -> 移动速度60->75，血量320->350，模型略微缩小
+虚无行者 ->移动速度120->110
+遗忘者 ->血量240->200   触须-> 移动速度 120->105'
+        常量: ReplaceableTextures\PassiveButtons\PASBTNShadeTrueSight.blp
+    CreateQuestBJ
+        预设: QuestTypeReqDiscovered
+        常量: 1.12更新公告
+        常量: '修复敌人不掉落金币的bug,
+修复关于波数的说明,
+修复了boss进攻模组的问题
+修复了UI方面的一些问题，
+胜利条件调整，现在只要击退遗忘者就算胜利'
+        常量: ReplaceableTextures\PassiveButtons\PASBTNShadeTrueSight.blp
+    CreateQuestBJ
+        预设: QuestTypeReqDiscovered
+        常量: 1.11更新公告
+        常量: '方向指示器功能上线
+玩家可通过按下Esc键来选择开启和关闭自己的方向指示器'
+        常量: ReplaceableTextures\PassiveButtons\PASBTNShadeTrueSight.blp
+    CreateQuestBJ
+        预设: QuestTypeReqDiscovered
+        常量: 1.10更新公告
+        常量: '精英：猛犸 精英：虚无行者 精英：遗忘者 已完工
+现在你可以体验完整的1-10波难度逐渐提升的游戏了'
+        常量: ReplaceableTextures\PassiveButtons\PASBTNShadeTrueSight.blp
+    CreateQuestBJ
+        预设: QuestTypeReqDiscovered
+        常量: 1.09更新公告
+        常量: '精英：刺蛇 与 精英：阴影 已完工
+精英组代码的结构已确定，预计2-3天将剩余的精英制作完成'
+        常量: ReplaceableTextures\PassiveButtons\PASBTNShadeTrueSight.blp
+    CreateQuestBJ
+        预设: QuestTypeReqDiscovered
+        常量: 1.07更新公告
+        常量: '刷兵触发已经达到稳定级别
+精英系统正锐意制作中!'
+        常量: ReplaceableTextures\PassiveButtons\PASBTNShadeTrueSight.blp
+    CreateQuestBJ
+        预设: QuestTypeReqDiscovered
+        常量: 1.04更新公告
+        常量: '玩家镜头组优化完成，
+支持玩家←和→切换镜头组
+镜头现在分2组，共8个，分别在正常状态与精英前状态下应用'
+        常量: ReplaceableTextures\PassiveButtons\PASBTNShadeTrueSight.blp
+    CreateQuestBJ
+        预设: QuestTypeReqDiscovered
+        常量: 1.03更新公告
+        常量: '一个关于精英的设想被建立，同时预计在未来的版本中进行以下修改
+①刷兵机制完全优化，采用世界等级的形式
+②精英与boss登场
+③玩家镜头组优化'
+        常量: ReplaceableTextures\PassiveButtons\PASBTNShadeTrueSight.blp
